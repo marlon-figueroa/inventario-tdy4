@@ -27,7 +27,7 @@ class TestTableController extends AdminController
         $grid = new Grid(new TestTable());
         $grid->column('id', __('Id'));
         $grid->column('nombre', __('Nombre'));
-        $grid->column('foto', __('Foto'));
+        $grid->column('foto', __('Foto'))->image();
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -45,7 +45,7 @@ class TestTableController extends AdminController
         $show = new Show(TestTable::findOrFail($id));
         $show->field('id', __('Id'));
         $show->field('nombre', __('Nombre'));
-        $show->field('foto', __('Foto'));
+        $show->field('foto', __('Foto'))->image();
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
