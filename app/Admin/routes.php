@@ -1,5 +1,7 @@
 <?php
 
+use App\Admin\Controllers\CategoriaClasificacionController;
+use App\Admin\Controllers\CategoriaController;
 use App\Admin\Controllers\TestTableController;
 use Illuminate\Routing\Router;
 
@@ -15,5 +17,7 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('home');
 
     $router->resource('test-tables', TestTableController::class);
+    $router->resource('categorias', CategoriaController::class);
+    $router->resource('categoria-clasificacions', CategoriaClasificacionController::class);
 
 });
