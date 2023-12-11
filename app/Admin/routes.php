@@ -23,7 +23,7 @@ Route::group([
 
     $router->resource('test-tables', TestTableController::class);
     $router->resource('categorias', CategoriaController::class);
-    $router->resource('categoria-clasificacions', CategoriaClasificacionController::class);
+    $router->resource('clasificaciones', CategoriaClasificacionController::class);
     $router->resource('clientes', ClienteController::class);
 
     $router->resource('marcas', MarcaController::class);

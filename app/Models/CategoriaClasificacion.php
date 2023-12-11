@@ -12,7 +12,7 @@ class CategoriaClasificacion extends Model
     protected $guarded = [];
     protected $table = 'categoria_clasificaciones';
 
-     /**
+    /**
      * Get the categories that owns the Post
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

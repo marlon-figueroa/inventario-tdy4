@@ -69,7 +69,7 @@ class CategoriaClasificacionController extends AdminController
 
         $form->text('codigo', __('Codigo'));
         $form->text('nombre', __('Nombre'));
-        $form->select('categoria_id')->options(Categoria::all()->pluck('nombre','id'));
+        $form->select('categoria_id', 'Categoria')->options(Categoria::all()->pluck('nombre','id'));
         return $form;
     }
 }
