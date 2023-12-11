@@ -33,8 +33,6 @@ class ClienteController extends AdminController
         $grid->column('ciudad', __('Ciudad'));
         $grid->column('direccion', __('Direccion'));
         $grid->column('telefono', __('Telefono'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -56,8 +54,6 @@ class ClienteController extends AdminController
         $show->field('ciudad', __('Ciudad'));
         $show->field('direccion', __('Direccion'));
         $show->field('telefono', __('Telefono'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }

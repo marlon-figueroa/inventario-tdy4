@@ -17,7 +17,8 @@ class CreateCategoriaClasificacionesTable extends Migration
             $table->increments('id');
             $table->string('codigo')->comment('Codigo de catalogo')->nullable();
             $table->string('nombre')->comment('Nombre de clasificacion')->nullable();
-            $table->integer('categoria_id')->comment('Categoria de la clasificacion')->nullable();
+            $table->unsignedBigInteger('categoria_id')->comment('Categoria de la clasificacion')->nullable();
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->timestamps();
         });
     }

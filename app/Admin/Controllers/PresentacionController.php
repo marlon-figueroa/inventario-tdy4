@@ -6,16 +6,16 @@ use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
-use \App\Models\Categoria;
+use \App\Models\Presentacion;
 
-class CategoriaController extends AdminController
+class PresentacionController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Categoria';
+    protected $title = 'Presentacion';
 
     /**
      * Make a grid builder.
@@ -24,12 +24,13 @@ class CategoriaController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Categoria());
+        $grid = new Grid(new Presentacion());
 
         $grid->column('id', __('Id'));
-        $grid->column('codigo', __('Codigo'));
         $grid->column('nombre', __('Nombre'));
         $grid->column('descripcion', __('Descripcion'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -42,12 +43,13 @@ class CategoriaController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Categoria::findOrFail($id));
+        $show = new Show(Presentacion::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('codigo', __('Codigo'));
         $show->field('nombre', __('Nombre'));
         $show->field('descripcion', __('Descripcion'));
+        $show->field('created_at', __('Created at'));
+        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
@@ -59,10 +61,10 @@ class CategoriaController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Categoria());
-        $form->text('codigo', __('Codigo'));
+        $form = new Form(new Presentacion());
+
         $form->text('nombre', __('Nombre'));
-        $form->textarea('descripcion', __('Descripcion'));
+        $form->text('descripcion', __('Descripcion'));
 
         return $form;
     }

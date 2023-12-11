@@ -31,8 +31,6 @@ class CategoriaClasificacionController extends AdminController
         $grid->column('codigo', __('Codigo'));
         $grid->column('categoria.nombre', __('Categoria'));
         $grid->column('nombre', __('Nombre'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -56,8 +54,6 @@ class CategoriaClasificacionController extends AdminController
             $categoria->nombre();
             $categoria->descripcion();
         });
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }

@@ -6,16 +6,16 @@ use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
-use \App\Models\Categoria;
+use \App\Models\Medida;
 
-class CategoriaController extends AdminController
+class MedidaController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Categoria';
+    protected $title = 'Medida';
 
     /**
      * Make a grid builder.
@@ -24,12 +24,12 @@ class CategoriaController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Categoria());
+        $grid = new Grid(new Medida());
 
         $grid->column('id', __('Id'));
-        $grid->column('codigo', __('Codigo'));
         $grid->column('nombre', __('Nombre'));
-        $grid->column('descripcion', __('Descripcion'));
+        $grid->column('simbolo', __('Simbolo'));
+        $grid->column('num_piezas', __('Numero de piezas'));
 
         return $grid;
     }
@@ -42,12 +42,12 @@ class CategoriaController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Categoria::findOrFail($id));
+        $show = new Show(Medida::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('codigo', __('Codigo'));
         $show->field('nombre', __('Nombre'));
-        $show->field('descripcion', __('Descripcion'));
+        $show->field('simbolo', __('Simbolo'));
+        $show->field('num_piezas', __('Numero de piezas'));
 
         return $show;
     }
@@ -59,10 +59,11 @@ class CategoriaController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Categoria());
-        $form->text('codigo', __('Codigo'));
+        $form = new Form(new Medida());
+
         $form->text('nombre', __('Nombre'));
-        $form->textarea('descripcion', __('Descripcion'));
+        $form->text('simbolo', __('Simbolo'));
+        $form->text('num_piezas', __('Numero de piezas'));
 
         return $form;
     }
