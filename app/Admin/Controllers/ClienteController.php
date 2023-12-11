@@ -26,6 +26,20 @@ class ClienteController extends AdminController
     {
         $grid = new Grid(new Cliente());
 
+        $grid->filter(function ($filter) {
+            // Remove the default id filter
+            $filter->disableIdFilter();
+
+            // Add a column filter
+            $filter->like('dui', 'Dui');
+
+            // Add a column filter
+            $filter->like('nombres', 'Nombres');
+
+             // Add a column filter
+             $filter->like('apellidos', 'Apellidos');
+        });
+
         $grid->column('id', __('Id'));
         $grid->column('dui', __('Dui'));
         $grid->column('nombres', __('Nombres'));

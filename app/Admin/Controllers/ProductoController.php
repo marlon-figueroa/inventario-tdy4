@@ -30,6 +30,17 @@ class ProductoController extends AdminController
     {
         $grid = new Grid(new Producto());
 
+        $grid->filter(function ($filter) {
+            // Remove the default id filter
+            $filter->disableIdFilter();
+
+            // Add a column filter
+            $filter->like('codigo', 'SKU');
+
+            // Add a column filter
+            $filter->like('nombre', 'Nombre');
+        });
+
         $grid->column('codigo', __('SKU'));
         $grid->column('foto', __('Foto'))->image();
         $grid->column('nombre', __('Nombre'));
@@ -100,22 +111,22 @@ class ProductoController extends AdminController
     {
         $form = new Form(new Producto());
 
-        $form->text('codigo', __('SKU'));
-        $form->image('foto', __('Foto'));
-        $form->text('nombre', __('Nombre'));
-        $form->text('existencia', __('Existencia'));
-        $form->decimal('precio_unitario', __('Precio unitario'));
-        $form->decimal('margen', __('Margen'));
-        $form->decimal('impuesto', __('Impuesto'));
+        $form->column(1 / 2, function ($form) {
+            $form->text('codigo', __('SKU'));
+            $form->image('foto', __('Foto'));
+            $form->text('nombre', __('Nombre'));
+            $form->select('clasificacion_id', 'Clasificacion')->options(CategoriaClasificacion::all()->pluck('nombre', 'id'));
+            $form->select('marca_id', 'Marca')->options(Marca::all()->pluck('nombre', 'id'));
+            $form->select('presentacion_id', 'Presentacion')->options(Presentacion::all()->pluck('nombre', 'id'));
+            $form->select('medida_id', 'Medida')->options(Medida::all()->pluck('nombre', 'id', 'simbolo'));
+        });
 
-        $form->select('clasificacion_id','Clasificacion')->options(CategoriaClasificacion::all()->pluck('nombre','id'));
-
-        $form->select('marca_id', 'Marca')->options(Marca::all()->pluck('nombre','id'));
-
-        $form->select('presentacion_id', 'Presentacion')->options(Presentacion::all()->pluck('nombre','id'));
-
-        $form->select('medida_id','Medida')->options(Medida::all()->pluck('nombre','id','simbolo'));
-
+        $form->column(1 / 2, function ($form) {
+            $form->text('existencia', __('Existencia'));
+            $form->decimal('precio_unitario', __('Precio unitario'));
+            $form->decimal('margen', __('Margen'));
+            $form->decimal('impuesto', __('Impuesto'));
+        });
         return $form;
     }
 }
